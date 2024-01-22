@@ -2,299 +2,301 @@ import React, {useState} from "react";
 import uniData from 
 
 
-function jsonToAverages(){
+function averageTestData() {
+    
+  
     const dataArray = require('./csvjson.json');
-
+    
     // Initialize an empty array to store the compiled data
     let compiledData = [];
-
+    
     // Loop through each object in the array
     dataArray.forEach(obj => {
-    // Extract values from the object
-    const originalFilename = obj.original_filename;
-    const col1 = obj.col1;
-    const col2 = obj.col2;
-    const col3 = obj.col3;
-    const col4 = obj.col4;
-    const col5 = obj.col5;
-    const col6 = obj.col6;
-
-    // Create a subarray with original filename as the first element
-    const subarray = [originalFilename, col1, col2, col3, col4, col5, col6];
-
-    // Push the subarray into the compiledData array
-    compiledData.push(subarray);
+      // Extract values from the object
+      const originalFilename = obj.original_filename;
+      const col1 = obj.col1;
+      const col2 = obj.col2;
+      const col3 = obj.col3;
+      const col4 = obj.col4;
+      const col5 = obj.col5;
+      const col6 = obj.col6;
+    
+      // Create a subarray with original filename as the first element
+      const subarray = [originalFilename, col1, col2, col3, col4, col5, col6];
+    
+      // Push the subarray into the compiledData array
+      compiledData.push(subarray);
     });
-
+    
     // Now, 'compiledData' is a 2D array with the desired structure
-
-
+    
+    
     // Mapping of messy college file names to clean college names
     const collegeNameMapping = {
-    "Caltech Common Data Set 2022-23_Published_June 2023.pdf": "California Institute of Technology",
-    "vanderbiltcds.pdf": "Vanderbilt University",
-    "stanfordCDS.pdf": "Stanford University",
-    "harvard_cds_2021-2022.pdf": "Harvard University",
-    "yalecds.pdf": "Yale University",
-    "princetoncds.pdf": "Princeton University",
-    "ucsdcds.pdf": "University of California, San Diego",
-    "ucicds.pdf": "University of California, Irvine",
-    "cmucds.pdf": "Carnegie Mellon University",
-    "dartmouthcds.pdf": "Dartmouth College",
-    "ucbcds.pdf": "University of California, Berkeley",
-    "browncds.pdf": "Brown University",
-    "dartmouthCDS.pdf": "Dartmouth College",
-    "purduecds.pdf": "Purdue University",
-    "northwesterdcs.pdf": "Northwestern University",
-    "ricecds.pdf": "Rice University",
-    "dukecds.pdf": "Duke University",
-    "Columbia College and Columbia Engineering 2022-2023 Common Data Set.pdf": "Columbia University",
-    "upenn.pdf": "University of Pennsylvania",
-    "uchicagocds.pdf": "University of Chicago",
-    "CDS_2022-2023_Cornell-University-v5.pdf": "Cornell University",
-    "Common Data Set 2022-23 — MIT Institutional Research.pdf": "Massachusetts Institute of Technology (MIT)",
-    "princetonCDS.pdf": "Princeton University"
-
-
-    // Add more mappings as needed
+      "Caltech Common Data Set 2022-23_Published_June 2023.pdf": "California Institute of Technology",
+      "vanderbiltcds.pdf": "Vanderbilt University",
+      "stanfordCDS.pdf": "Stanford University",
+      "harvard_cds_2021-2022.pdf": "Harvard University",
+      "yalecds.pdf": "Yale University",
+      "princetoncds.pdf": "Princeton University",
+      "ucsdcds.pdf": "University of California, San Diego",
+      "ucicds.pdf": "University of California, Irvine",
+      "cmucds.pdf": "Carnegie Mellon University",
+      "dartmouthcds.pdf": "Dartmouth College",
+      "ucbcds.pdf": "University of California, Berkeley",
+      "browncds.pdf": "Brown University",
+      "dartmouthCDS.pdf": "Dartmouth College",
+      "purduecds.pdf": "Purdue University",
+      "northwesterdcs.pdf": "Northwestern University",
+      "ricecds.pdf": "Rice University",
+      "dukecds.pdf": "Duke University",
+      "Columbia College and Columbia Engineering 2022–2023 Common Data Set.pdf": "Columbia University",
+      "upenn.pdf": "University of Pennsylvania",
+      "uchicagocds.pdf": "University of Chicago",
+      "CDS_2022-2023_Cornell-University-v5.pdf": "Cornell University",
+      "Common Data Set 2022-23 — MIT Institutional Research.pdf": "Massachusetts Institute of Technology (MIT)",
+      "princetonCDS.pdf": "Princeton University"
+    
+    
+      // Add more mappings as needed
     };
-
+    
     // Assuming 'compiledData' is the 2D array with original file names as the first element in each subarray
     const updatedCompiledData = compiledData.map(subarray => {
-    const originalFilename = subarray[0];
-    const cleanCollegeName = collegeNameMapping[originalFilename] || originalFilename;
-
-    // Replace the first element (original filename) with the clean college name
-    return [cleanCollegeName, ...subarray.slice(1)];
+      const originalFilename = subarray[0];
+      const cleanCollegeName = collegeNameMapping[originalFilename] || originalFilename;
+    
+      // Replace the first element (original filename) with the clean college name
+      return [cleanCollegeName, ...subarray.slice(1)];
     });
-
+  
+  // now it is like this
+    /* 
+  
+    ["harvar", "gpaImporant", "", "", "X", ""] */
+    
     // Now, 'updatedCompiledData' has the clean college names instead of messy file names
     resultArray = []
     thisCollData = []
     for (let i = 0; i < updatedCompiledData.length; i++) {
-    if (i == 0) {
+      if (i == 0) {
         lastColl = updatedCompiledData[i][0]
-    }
-    thisColl = updatedCompiledData[i][0]
-    if (lastColl == thisColl){ // college did not change
+      }
+      thisColl = updatedCompiledData[i][0]
+      if (lastColl == thisColl){ // college did not change
         //console.log(i + "  " + updatedCompiledData[i]);;
         if (updatedCompiledData[i][1].localeCompare("SAT Composite") == 0){
-        thisCollData.push(updatedCompiledData[i][3])
-
+          thisCollData.push(updatedCompiledData[i][3])
+    
         }
-
-        if (updatedCompiledData[i][1].localeCompare("SAT Composite") == 0){
-        thisCollData.push(updatedCompiledData[i][3])
-
-        }
-
-
+  
+    
+    
         if (updatedCompiledData[i][1].localeCompare("ACT Composite") == 0){
-        thisCollData.push(updatedCompiledData[i][3])
-
+          thisCollData.push(updatedCompiledData[i][3])
+    
         }
-
-
-
-    }
-    else {
+    
+    
+    
+      }
+      else {
         resultArray.push(thisCollData);
         thisCollData = [updatedCompiledData[i][0]]
+      }
+    
+      lastColl = updatedCompiledData[i][0]
     }
-
-    lastColl = updatedCompiledData[i][0]
-    }
-
-
-    console.log(resultArray)
-
+    
+    
+    //console.log(resultArray)
+    
     result = []
-
+    
     for (let i = 0; i < resultArray.length; i++)
     {
         //test[i] = Object.assign({}, test[i]); 
         let temp = {
-        name: resultArray[i][0],
-        sat: resultArray[i][1],
-        act: resultArray[i][2],
+          name: resultArray[i][0],
+          sat: resultArray[i][1],
+          act: resultArray[i][2],
         }
-
+    
         result.push(temp);
-
+    
     }
-
+    
     return result;
-}
-
-
-function jsonToArr(){
+  
+  }
+  
+  
+  function factorImportanceData() {
     // Load the JSON file locally
-    const dataArray = require('src/assets/csvjson.json./csvjson.json');
-
+    const dataArray = require('./csvjson.json');
+  
     // Initialize an empty array to store the compiled data
     let compiledData = [];
-
+  
     // Loop through each object in the array
     dataArray.forEach(obj => {
-    // Extract values from the object
-    const originalFilename = obj.original_filename;
-    const col1 = obj.col1;
-    const col2 = obj.col2;
-    const col3 = obj.col3;
-    const col4 = obj.col4;
-    const col5 = obj.col5;
-    const col6 = obj.col6;
-
-    // Create a subarray with original filename as the first element
-    const subarray = [originalFilename, col1, col2, col3, col4, col5, col6];
-
-    // Push the subarray into the compiledData array
-    compiledData.push(subarray);
+      // Extract values from the object
+      const originalFilename = obj.original_filename;
+      const col1 = obj.col1;
+      const col2 = obj.col2;
+      const col3 = obj.col3;
+      const col4 = obj.col4;
+      const col5 = obj.col5;
+      const col6 = obj.col6;
+  
+      // Create a subarray with original filename as the first element
+      const subarray = [originalFilename, col1, col2, col3, col4, col5, col6];
+  
+      // Push the subarray into the compiledData array
+      compiledData.push(subarray);
     });
-
+  
     // Now, 'compiledData' is a 2D array with the desired structure
-
-
+  
+  
     // Mapping of messy college file names to clean college names
     const collegeNameMapping = {
-    "Caltech Common Data Set 2022-23_Published_June 2023.pdf": "California Institute of Technology",
-    "vanderbiltcds.pdf": "Vanderbilt University",
-    "stanfordCDS.pdf": "Stanford University",
-    "harvard_cds_2021-2022.pdf": "Harvard University",
-    "yalecds.pdf": "Yale University",
-    "princetoncds.pdf": "Princeton University",
-    "ucsdcds.pdf": "University of California, San Diego",
-    "ucicds.pdf": "University of California, Irvine",
-    "cmucds.pdf": "Carnegie Mellon University",
-    "dartmouthcds.pdf": "Dartmouth College",
-    "ucbcds.pdf": "University of California, Berkeley",
-    "browncds.pdf": "Brown University",
-    "dartmouthCDS.pdf": "Dartmouth College",
-    "purduecds.pdf": "Purdue University",
-    "northwesterdcs.pdf": "Northwestern University",
-    "ricecds.pdf": "Rice University",
-    "dukecds.pdf": "Duke University",
-    "Columbia College and Columbia Engineering 2022-2023 Common Data Set.pdf": "Columbia University",
-    "upenn.pdf": "University of Pennsylvania",
-    "uchicagocds.pdf": "University of Chicago",
-    "CDS_2022-2023_Cornell-University-v5.pdf": "Cornell University",
-    "Common Data Set 2022-23 — MIT Institutional Research.pdf": "Massachusetts Institute of Technology (MIT)",
-    "princetonCDS.pdf": "Princeton University"
-    
-    
-    // Add more mappings as needed
+      "Caltech Common Data Set 2022-23_Published_June 2023.pdf": "California Institute of Technology",
+      "vanderbiltcds.pdf": "Vanderbilt University",
+      "stanfordCDS.pdf": "Stanford University",
+      "harvard_cds_2021-2022.pdf": "Harvard University",
+      "yalecds.pdf": "Yale University",
+      "princetoncds.pdf": "Princeton University",
+      "ucsdcds.pdf": "University of California, San Diego",
+      "ucicds.pdf": "University of California, Irvine",
+      "cmucds.pdf": "Carnegie Mellon University",
+      "dartmouthcds.pdf": "Dartmouth College",
+      "ucbcds.pdf": "University of California, Berkeley",
+      "browncds.pdf": "Brown University",
+      "dartmouthCDS.pdf": "Dartmouth College",
+      "purduecds.pdf": "Purdue University",
+      "northwesterdcs.pdf": "Northwestern University",
+      "ricecds.pdf": "Rice University",
+      "dukecds.pdf": "Duke University",
+      "Columbia College and Columbia Engineering 2022–2023 Common Data Set.pdf": "Columbia University",
+      "upenn.pdf": "University of Pennsylvania",
+      "uchicagocds.pdf": "University of Chicago",
+      "CDS_2022-2023_Cornell-University-v5.pdf": "Cornell University",
+      "Common Data Set 2022-23 — MIT Institutional Research.pdf": "Massachusetts Institute of Technology (MIT)",
+      "princetonCDS.pdf": "Princeton University"
+  
+  
+      // Add more mappings as needed
     };
-
+  
     // Assuming 'compiledData' is the 2D array with original file names as the first element in each subarray
     const updatedCompiledData = compiledData.map(subarray => {
-    const originalFilename = subarray[0];
-    const cleanCollegeName = collegeNameMapping[originalFilename] || originalFilename;
-
-    // Replace the first element (original filename) with the clean college name
-    return [cleanCollegeName, ...subarray.slice(1)];
+      const originalFilename = subarray[0];
+      const cleanCollegeName = collegeNameMapping[originalFilename] || originalFilename;
+  
+      // Replace the first element (original filename) with the clean college name
+      return [cleanCollegeName, ...subarray.slice(1)];
     });
-
+  
     // Now, 'updatedCompiledData' has the clean college names instead of messy file names
     resultArray = []
     thisCollData = []
     for (let i = 0; i < updatedCompiledData.length; i++) {
-    if (i == 0) {
+      if (i == 0) {
         lastColl = updatedCompiledData[i][0]
-    }
-    thisColl = updatedCompiledData[i][0]
-    if (lastColl == thisColl){ // college did not change
+      }
+      thisColl = updatedCompiledData[i][0]
+      if (lastColl == thisColl){ // college did not change
         //console.log(i + "  " + updatedCompiledData[i]);;
         if (updatedCompiledData[i][1].localeCompare("Academic GPA") == 0){
-        //resultArray.push(updatedCompiledData[i]) wtf is this shit
-        if (updatedCompiledData[i][2].length == 1){
+          //resultArray.push(updatedCompiledData[i])
+  
+          // updatedCompiledDatA IS section C7 with tyhe checks
+          // check lengths
+          // ["harvar", "sat importance", "", "", "x", ""]
+          if (updatedCompiledData[i][2].length == 1){
             // very important
             thisCollData.push(4);
-        }
-        else if (updatedCompiledData[i][3].length == 1){
+          }
+          else if (updatedCompiledData[i][3].length == 1){
             thisCollData.push(3);
-        }
-        else if (updatedCompiledData[i][4].length == 1){
+          }
+          else if (updatedCompiledData[i][4].length == 1){
             thisCollData.push(2);
-        }
-        else {
+          }
+          else {
             thisCollData.push(0);
+          }
+  
         }
-        
-        }
-
+  
         if (updatedCompiledData[i][1].localeCompare("Standardized test scores") == 0){
-        //resultArray.push(updatedCompiledData[i])
-        if (updatedCompiledData[i][2].length == 1){
+          //resultArray.push(updatedCompiledData[i])
+          if (updatedCompiledData[i][2].length == 1){
             // very important
             thisCollData.push(4);
-        }
-        else if (updatedCompiledData[i][3].length == 1){
+          }
+          else if (updatedCompiledData[i][3].length == 1){
             thisCollData.push(3);
-        }
-        else if (updatedCompiledData[i][4].length == 1){
+          }
+          else if (updatedCompiledData[i][4].length == 1){
             thisCollData.push(2);
-        }
-        else {
+          }
+          else {
             thisCollData.push(0);
+          }
+  
         }
-
-        }
-
+  
         if (updatedCompiledData[i][1].localeCompare("First generation") == 0){
-        //resultArray.push(updatedCompiledData[i])
-        if (updatedCompiledData[i][2].length == 1){
+          //resultArray.push(updatedCompiledData[i])
+          if (updatedCompiledData[i][2].length == 1){
             // very important
             thisCollData.push(4);
-        }
-        else if (updatedCompiledData[i][3].length == 1){
+          }
+          else if (updatedCompiledData[i][3].length == 1){
             thisCollData.push(3);
-        }
-        else if (updatedCompiledData[i][4].length == 1){
+          }
+          else if (updatedCompiledData[i][4].length == 1){
             thisCollData.push(2);
-        }
-        else {
+          }
+          else {
             thisCollData.push(0);
+          }
+  
         }
-
-        }
-
-        
-
-        
-    }
-    else {
+      }
+      else {
         resultArray.push(thisCollData);
         thisCollData = [updatedCompiledData[i][0]]
+      }
+  
+      lastColl = updatedCompiledData[i][0]
     }
-    
-    lastColl = updatedCompiledData[i][0]
-    }
-
-
-    console.log(resultArray)
-
-    result = []
-
+  
+  
+    //console.log(resultArray)
+  
+   result = []
+  
     for (let i = 0; i < resultArray.length; i++)
     {
         //test[i] = Object.assign({}, test[i]); 
         let temp = {
-        name: resultArray[i][0],
-        gpa: resultArray[i][1],
-        standardized: resultArray[i][2],
-        firstgen: resultArray[i][3]
+          name: resultArray[i][0],
+          gpa: resultArray[i][1],
+          standardized: resultArray[i][2],
+          firstgen: resultArray[i][3]
         }
-
+  
         result.push(temp);
-    
+  
     }
-
+  
     return result;
-
-}
-
-
-
+  
+    
+  }
 export default function Renderer(){
     // schools as a variable
     // very important: 4
@@ -315,8 +317,8 @@ export default function Renderer(){
 
     // school array with all school objects
     const allSchoolNames = [];
-    const allSchoolsAverages = [schoolAveragesExample];
-    const allSchoolsImportance = jsonToArr();
+    const allSchoolsAverages = averageTestData();
+    const allSchoolsImportance = factorImportanceData();
 
     for (let i = 0; i < allSchoolsImportance.length; i++)
     {
