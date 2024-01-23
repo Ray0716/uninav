@@ -35,7 +35,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="logo.png" alt="Logo" width=auto height="250">
+    <img src="logo.png" alt="Logo" width = "240">
   </a>
 
   <h3 align="center">Best-README-Template</h3>
