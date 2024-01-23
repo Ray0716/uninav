@@ -38,7 +38,10 @@
     <img src="logo.png" alt="Logo" width = "240">
   </a>
 
-  <h3 align="center">UniNav</h3>
+  <!-- <h3 align="center">UniNav</h3> -->
+  
+<br>
+<p></p>
 
   <p align="center">
     A react web application to help students find matching universities using data from common data sets.
@@ -57,7 +60,6 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -73,14 +75,12 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
 
 
 
@@ -131,16 +131,6 @@ This is an example of how to list things you need to use the software and how to
 textextext
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-textextext
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
