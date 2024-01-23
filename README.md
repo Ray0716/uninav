@@ -18,13 +18,17 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
+<div align="center">
+  
+![GitHub repo size](https://img.shields.io/github/repo-size/Ray0716/uninav?style=for-the-badge&logo=github&logoColor=white&color=teal)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/Ray0716/uninav?style=for-the-badge&logo=git&logoColor=white&color=orange)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Ray0716/uninav/master?style=for-the-badge&logo=commit&logoColor=white)
+![GitHub top language](https://img.shields.io/github/languages/top/Ray0716/uninav?style=for-the-badge&logo=javascript&logoColor=white)
+![GitHub contributors](https://img.shields.io/github/contributors/Ray0716/uninav?style=for-the-badge&color=red)
+![GitHub Repo stars](https://img.shields.io/github/stars/Ray0716/uninav?style=for-the-badge)
+
+</div>
 
 
 <!-- PROJECT LOGO -->
